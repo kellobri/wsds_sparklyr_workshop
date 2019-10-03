@@ -37,9 +37,10 @@ install.packages('sparklyr.nested')
 sparklyr.nested::sdf_unnest(simple_json, "b")
 
 install.packages("bench")
+install.packages("ggbeeswarm")
 
 # EXERCISE: File Write Benchmark - 1M row write speed
-numeric <- copy_to(sc, data.frame(nums = runif(10^6)))
+numeric <- copy_to(sc, data.frame(nums = runif(10^5)))
 bench::mark(
   CSV = spark_write_csv(numeric, "data.csv", mode = "overwrite"),
   JSON = spark_write_json(numeric, "data.json", mode = "overwrite"),
